@@ -1,9 +1,9 @@
-void hypotrochoide(double cx, double cy, double r) // étoile à 5 branches
+// https://en.wikipedia.org/wiki/Hypotrochoid
+void hypotrochoide(double cx=0, double cy=100, double r=50) // étoile à 5 branches
 {
   double x,y;
   double r1=r, r2=r*3/5, d=r;
-//  double r1=50, r2=30, d=50;
-  for (double t = 0; t<12*M_PI; t+=par) {
+  for (double t = 0; t<6*M_PI; t+=par) {
     x = cx + (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
     y = cy + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
     toAngle(x,y);
@@ -12,10 +12,10 @@ void hypotrochoide(double cx, double cy, double r) // étoile à 5 branches
   }  
 }
 
-void epicycloide(double cx, double cy, double a, double b)
+// https://en.wikipedia.org/wiki/Epicycloid
+void epicycloide(double cx=0, double cy=130, double a=16, double b=10) // rosace
 {
   double x,y;
-//  double a=16, b=10;
   for (double t = 0; t<2*M_PI; t+=par) {
     x = (a + b)*cos(t) - b*cos((a/b + 1)* t);
     y = 130 + (a + b)*sin(t) - b*sin((a/b + 1)*t);
@@ -25,7 +25,9 @@ void epicycloide(double cx, double cy, double a, double b)
   }  
 }
 
-void coeur(double cx, double cy, double r)
+// Coeur de Raphaël Laporte
+// http://www.les-mathematiques.net/phorum/read.php?8,418124,418399
+void coeur(double cx=0, double cy=120, double r=40)
 {
   double x,y;
   double taille=50;
@@ -37,48 +39,10 @@ void coeur(double cx, double cy, double r)
     if (debug) log("COEUR", t, x, y);
   }
 }
-void hypotrochoide() // étoile à 5 branches
-{
-  double x,y;
-  double r1=50, r2=30, d=50;
-  for (double t = 0; t<12*M_PI; t+=par) {
-    x = (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
-    y = 100 + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
-    toAngle(x,y);
-    moveServos();    
-    if (debug) log("HYPO", t, x, y);
-  }  
-}
 
-void epicycloide()
-{
+void cercle(double cx=0, double cy=100, double r=30){
   double x,y;
-  double a=16, b=10;
   for (double t = 0; t<2*M_PI; t+=par) {
-    x = (a + b)*cos(t) - b*cos((a/b + 1)* t);
-    y = 130 + (a + b)*sin(t) - b*sin((a/b + 1)*t);
-    toAngle(x,y);
-    moveServos();    
-    if (debug) log("EPI", t, x, y);
-  }  
-}
-
-void coeur()
-{
-  double x,y;
-  double taille=50;
-  for (double t = 0; t<2*M_PI; t+=par) {
-    x = taille*(sin(t)*sin(t)*sin(t));
-    y = 100 + taille*cos(t) - taille*(cos(t)*cos(t)*cos(t)*cos(t));
-    toAngle(x,y);
-    moveServos();    
-    if (debug) log("COEUR", t, x, y);
-  }
-}
-
-void cercle(double cx, double cy, double r){
-  double x,y;
-  for (int t = 0; t<2*M_PI; t+=par) {
     x = r * cos(t) + cx; 
     y = r * sin(t) + cy;
     toAngle(x,y);
@@ -87,7 +51,7 @@ void cercle(double cx, double cy, double r){
   }
 }
 
-void spirale(double cx, double cy, double cr, double pas) {
+void spirale(double cx=0, double cy=100, double cr=50, double pas=5) {
   double x,y, ppd = pas/360; // pas par degré
 
   while (cr>3) {
@@ -142,7 +106,7 @@ void maison(){
 void mire(){
   double x,y;
   double cx=0, cy=lg1-20, r=lg2;
-  for (double t = -M_PI/4; t<M_PI/4; t+=.1) {
+  for (double t = -M_PI/8; t<M_PI/8; t+=par) {
     x = r * cos(t) + cx; 
     y = r * sin(t) + cy;
     toAngle(x,y);

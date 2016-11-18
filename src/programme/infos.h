@@ -17,14 +17,13 @@ B : Position servo s2 (pos=180, C proche de A pour pos=0)
 C : Position crayon 
 
  TODO :
- Détailler angles
- Dessin maison doc
+ Détailler angles pour calcul ciné inverse dans doc ?
  Pos initiale => 1er point du dessin ???
- collision si s2<28?
+ determiner valeur min S2 pour éviter collision entre les 2 bras => protéger dans toAngle()
  interactions avec le clavier ?
 
 TESTER :
- Ralentissement du déplacement si deltaAngle > 3°
+ Ralentissement du déplacement si deltaAngle > 3° (décommenter cinematique.h:60-92)
  lecture du zero dans eprom
  pos et taille figures
  
@@ -33,6 +32,21 @@ TESTER :
  simplifier droite()->ok
  utiliser writeMicroseconds()->ok
  zone couverte : -148 < x < -148 // 0 < y < 210
+
+PLUS D'IDEES DE DESSINS :
+https://en.wikipedia.org/wiki/Butterfly_curve_(transcendental) 
+http://mathworld.wolfram.com/EightCurve.html
+http://mathworld.wolfram.com/DumbbellCurve.html
+http://mathworld.wolfram.com/PiriformCurve.html
+http://rouxjeanbernard.ch/AM/html/amch57.html (spirographe)
+http://www.mathcurve.com/courbes2d/ornementales/ornementales.shtml
+
+http://www.gralon.net/actualites/buzz/buzz-dessiner-d-un-seul-trait-138.htm
+http://www.huffpostmaghreb.com/2016/02/22/robot-google-photo-dessin-portrait_n_9291590.html
+
+CONTACTS RELATIFS AU PROJET :
+gerald.huguenin@he-arc.ch et david.grunenwald@he-arc.ch
+https://github.com/HE-Arc/drawbot
 
 */
 

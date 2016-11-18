@@ -6,9 +6,19 @@ Ce robot peut dessiner des formes simples à partir des mouvements des moteurs s
 
 ## Atelier 
 
-Ce projet est conçu par la [HE-Arc ingénierie][http://www.he-arc.ch/ingenierie] pour être monté et pris en main par des enfants à partir de 10 ans dans le cadre d'un atelier.
+Ce projet est conçu pour être monté et pris en main par des enfants à partir de 10 ans dans le cadre d'un atelier.
 
 L'atelier se déroule en 3 phases :
 1. Soudage de la carte de contrôle 
 2. Assemblage du support (pièces pré-découpées en MDF)
 3. Présentation et modification du logiciel pour personnaliser les dessins
+
+## Licence
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.
+
+## Crédits
+
+Ont participé au développement du projet : Gérald Huguenin, David Grunenwald, Alexandre Neukomm, Julien Marchand, François Tièche
+
+Avec les moyens mis à disposition par la [HE-Arc Ingénierie](http://www.he-arc.ch/ingenierie) et le [Fablab Neuchâtel](http://fablab-neuch.ch/)

@@ -7,7 +7,7 @@ const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
 const int VITESSE=40;               // Pause en ms après un mouvement
 const int MIN_US=550, MAX_US=2350;  // Commande servo en us (tester 700-2300)
 const int COR_X=5, COR_Y=12;        // Corrections x,y
-double COR_S1=5.6, COR_S2=-3.4;     // Correction angle servos en degrés
+double COR_S1=6.8, COR_S2=-3.4;     // Correction angle servos en degrés
 
 // VARIABLES 
 Servo s1, s2;             // s1: épaule (en A), s2: coude (en B)
@@ -45,7 +45,7 @@ void lectureCorrectif(){
   delay(500);
   int E_MSB = EEPROM.read(0);
   int E_LSB = EEPROM.read(1);
-delay(500);
+  delay(500);
   int A_MSB = EEPROM.read(2);
   int A_LSB = EEPROM.read(3);
   int epaule  = 256*E_MSB+E_LSB;
