@@ -27,7 +27,7 @@ void epicycloide(double cx=0, double cy=130, double a=16, double b=10) // rosace
 
 // Coeur de Raphaël Laporte
 // http://www.les-mathematiques.net/phorum/read.php?8,418124,418399
-void coeur(double cx=0, double cy=120, double r=40)
+void coeur(double cx=0, double cy=130, double r=40)
 {
   double x,y;
   double taille=50;
@@ -61,7 +61,7 @@ void spirale(double cx=0, double cy=100, double cr=50, double pas=5) {
       toAngle(x,y);
       moveServos();
       cr-=ppd;
-      if (cr<1) exit(0);
+      if (cr<1) break;
     if (debug) log("SPIRALE", t, x, y);
     }
   }

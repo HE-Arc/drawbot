@@ -43,17 +43,16 @@ bool toAngle(double x, double y){
   if (isInside(x,y)) {
     angle1 = angleR1 * 180 / M_PI;
     angle2 = angleR2 * 180 / M_PI;
-    angle1+=COR_S1;angle2+=COR_S2; // Application correctifs angles
+    angle1+=COR_S1;angle2+=COR_S2;            // Application correctifs angles
+    if (angle2<ANGLE_MIN) angle2 = ANGLE_MIN; // Evite les collisionsq
   }
   else {
       Serial.println("HORS DE LA FEUILLE");
       return false;
   }
-
   if (debug) log(x,y);
   return true;
 }
-
 
 void moveServos()
 {

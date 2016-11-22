@@ -5,6 +5,7 @@
 // CONSTANTES
 const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
 const int VITESSE=40;               // Pause en ms après un mouvement
+const int ANGLE_MIN=28;             // si angle2 < ANGLE_MIN collision avant-bras avec bras
 const int MIN_US=550, MAX_US=2350;  // Commande servo en us (tester 700-2300)
 const int COR_X=5, COR_Y=12;        // Corrections x,y
 double COR_S1=6.8, COR_S2=-3.4;     // Correction angle servos en degrés
