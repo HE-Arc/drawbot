@@ -4,11 +4,16 @@
 
 // CONSTANTES
 const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
-const int VITESSE=40;               // Pause en ms après un mouvement
-const int ANGLE_MIN=28;             // si angle2 < ANGLE_MIN collision avant-bras avec bras
+const int VITESSE=0;               // Pause en ms après un mouvement
+const int ANGLE_MIN=5;              // si angle2 < ANGLE_MIN collision avant-bras avec bras
 const int MIN_US=550, MAX_US=2350;  // Commande servo en us (tester 700-2300)
 const int COR_X=5, COR_Y=12;        // Corrections x,y
-double COR_S1=6.8, COR_S2=-3.4;     // Correction angle servos en degrés
+double COR_S1=16.8, COR_S2=-3.4;     // Correction angle servos en degrés
+const double SHIFT_S1_ANGLE=7.5;
+const double MIN_X=-130;
+const double MAX_X=130;
+const double MIN_Y=10;
+const double MAX_Y=205;
 
 // VARIABLES 
 Servo s1, s2;             // s1: épaule (en A), s2: coude (en B)
@@ -56,7 +61,7 @@ void lectureCorrectif(){
   int cor_epaule = epaule-1500;        // écarts en us
   int cor_coude = coude-1500; 
 
-  COR_S1 = cor_epaule * 180./etendue;   //écarts en degrés
+  COR_S1 = cor_epaule * 180./etendue +SHIFT_S1_ANGLE;   //écarts en degrés
   COR_S2 = cor_coude * 180./etendue;
 
   Serial.print("EEPROM:Epaule=");Serial.print(epaule);Serial.print(", Coude=");Serial.print(coude);

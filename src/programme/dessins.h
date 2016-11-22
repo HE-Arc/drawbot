@@ -13,12 +13,14 @@ void hypotrochoide(double cx=0, double cy=100, double r=50) // étoile à 5 bran
 }
 
 // https://en.wikipedia.org/wiki/Epicycloid
-void epicycloide(double cx=0, double cy=130, double a=16, double b=10) // rosace
+void fleur(double cx=0, double cy=130, double rTotal=40, double k=3)//, double a=16, double b=10) // rosace
 {
+  double rCircleOut=rTotal/(k+1.0);
+  double rCircleIn=rCircleOut*k;
   double x,y;
   for (double t = 0; t<2*M_PI; t+=par) {
-    x = (a + b)*cos(t) - b*cos((a/b + 1)* t);
-    y = 130 + (a + b)*sin(t) - b*sin((a/b + 1)*t);
+    x = cx+(rCircleIn + rCircleOut)*cos(t) - rCircleOut*cos((rCircleIn/rCircleOut + 1)* t);
+    y = cy + (rCircleIn + rCircleOut)*sin(t) - rCircleOut*sin((rCircleIn/rCircleOut + 1)*t);
     toAngle(x,y);
     moveServos();    
     if (debug) log("EPI", t, x, y);
@@ -31,6 +33,7 @@ void coeur(double cx=0, double cy=130, double r=40)
 {
   double x,y;
   double taille=50;
+  cy=cy+2.0*r*1.5/5.0;
   for (double t = 0; t<2*M_PI; t+=par) {
     x = cx + r*(sin(t)*sin(t)*sin(t));
     y = cy + r*cos(t) - r*(cos(t)*cos(t)*cos(t)*cos(t));
@@ -91,16 +94,22 @@ void rectangle(double x1, double y1, double x2, double y2){
   droite(x1, y2, x1, y1);
 }
 
-void maison(){
-  droite(-75,90,-75,140);
-  droite(-75,140,-25,90);
-  droite(-25,90,-25,140);
-  droite(-25,140, -75,140);
-  droite(-75,140,-50,190);
-  droite(-50,190,-25,140);
-  droite(-25, 140,-75,90);
-  droite(-75,90,-25,90);
-  droite(-25,90,-75,90);
+void maison(double x=0, double y=100, double h=50){
+  double w=h*2/3.0;
+  double xLeft=x-w/2.0;
+  double xRight=x+w/2.0;
+  double yTopRoof=y+h/2.0;
+  double yTopWall=y+h/6.0;
+  double yBottom=y-h/2.0;
+  
+  droite(xLeft,yBottom,xLeft,yTopWall);
+  droite(xLeft,yTopWall,xRight,yBottom);
+  droite(xRight,yBottom,xRight,yTopWall);
+  droite(xRight,yTopWall, xLeft,yTopWall);
+  droite(xLeft,yTopWall,x,yTopRoof);
+  droite(x,yTopRoof,xRight,yTopWall);
+  droite(xRight, yTopWall,xLeft,yBottom);
+  droite(xLeft,yBottom,xRight,yBottom);
 }
 
 void mire(){
