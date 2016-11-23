@@ -1,6 +1,40 @@
 
 bool isInside(double x, double y){
-  if ( (x>-148)&&(x<148)&&(y>0)&&(y<210) ) return true;
+  if( x<MIN_X+COR_X ){
+    Serial.print("OUT X");
+    Serial.print(x); 
+    Serial.print("<");
+    Serial.print(MIN_X+COR_X);
+    Serial.println(); 
+    return false;
+  }
+  if( x>MAX_X+COR_X ){
+    Serial.print("OUT X");
+    Serial.print(x); 
+    Serial.print(">");
+    Serial.print(MAX_X+COR_X);
+    Serial.println(); 
+    return false;
+  }
+  if( y<MIN_Y + COR_Y ){
+    Serial.print("OUT Y");
+    Serial.print(y); 
+    Serial.print("<");
+    Serial.print(MIN_Y);
+    Serial.println();
+    return false;
+  }
+  if( y>MAX_Y + COR_Y){
+    Serial.print("OUT Y");
+    Serial.print(y); 
+    Serial.print(">");
+    Serial.print(MAX_Y+ COR_Y);
+    Serial.println(); 
+    return false;
+  }
+  return true;
+  
+  if ( (x>MIN_X)&&(x<MAX_X)&&(y>MIN_Y)&&(y<MAX_Y) ) return true;
   else return false;
 }
 
@@ -22,6 +56,7 @@ bool toAngle(double x, double y){
   t = (halfPerimeter-lg1)*(halfPerimeter-r)/(lg1*r);
   if (t < 0.0) {
     Serial.println("INACESSIBLE");
+    
     return false;
   }
 
