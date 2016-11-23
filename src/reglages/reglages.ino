@@ -42,8 +42,8 @@ void setup() {
   int A_MSB = EEPROM.read(2);
   int A_LSB = EEPROM.read(3);
   
-  epaule = 256*E_MSB+E_LSB;
-  coude = 256*A_MSB+A_LSB;
+  int epaule = 256*E_MSB+E_LSB;
+  int coude = 256*A_MSB+A_LSB;
   Serial.print("La position memorisee pour l'epaule est de : "); Serial.println(epaule);
   Serial.print("La position memorisee pour le coude est de : "); Serial.println(coude);
 }
