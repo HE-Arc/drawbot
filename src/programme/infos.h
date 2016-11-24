@@ -21,7 +21,7 @@ C : Position crayon
  Pos initiale => 1er point du dessin ???
  determiner valeur min S2 pour éviter collision entre les 2 bras => protéger dans toAngle()
  interactions avec le clavier ?
- taille max d'une liste de points ? https://www.arduino.cc/en/Reference/PROGMEM ?
+ taille max d'une liste de points ? https://www.arduino.cc/en/Reference/PROGMEM ? downcaster doubles ?
  Terminer mire : dessin segment et retour
  eviter positionnement avec attach (program.ino:9-10)
 

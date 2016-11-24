@@ -39,10 +39,10 @@ void mire(){
   // zone inaccessible
   fill(255,0,0);
   xc = map (midX+lg1, 0, 297, 0, pgWidth);
-  yc = map (230, 0, 210, 0, pgHeight); // 210 + décalage axe/feuille
+  yc = map (230, 0, 210, 0, pgHeight);     // 210 + décalage axe/feuille
   dx = map (2*lg2, 0, 297, 0, pgWidth);
   dy = map (2*lg2, 0, 210, 0, pgHeight);
-  arc(xc, yc, dx, dy, 0, PI);
+  arc(xc, yc, dx, dy, PI, 3*PI/2);
   
   // textes
   textSize(32);

@@ -43,7 +43,8 @@ void coeur(double cx=0, double cy=130, double r=40)
   }
 }
 
-void cercle(double cx=0, double cy=100, double r=30){
+void cercle(double cx=0, double cy=100, double r=30)
+{
   double x,y;
   for (double t = 0; t<2*PI; t+=par) {
     x = r * cos(t) + cx; 
@@ -54,7 +55,8 @@ void cercle(double cx=0, double cy=100, double r=30){
   }
 }
 
-void spirale(double cx=0, double cy=100, double cr=50, double pas=5) {
+void spirale(double cx=0, double cy=100, double cr=50, double pas=5) 
+{
   double x,y, ppd = pas/360; // pas par degré
 
   while (cr>3) {
