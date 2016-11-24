@@ -4,11 +4,11 @@
 
 // CONSTANTES
 const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
-const int VITESSE=0;               // Pause en ms après un mouvement
+const int VITESSE=0;                // Pause en ms après un mouvement
 const int ANGLE_MIN=5;              // si angle2 < ANGLE_MIN collision avant-bras avec bras
 const int MIN_US=550, MAX_US=2350;  // Commande servo en us (tester 700-2300)
 const int COR_X=5, COR_Y=12;        // Corrections x,y
-double COR_S1=16.8, COR_S2=-3.4;     // Correction angle servos en degrés
+double COR_S1=16.8, COR_S2=-3.4;    // Correction angle servos en degrés
 const double SHIFT_S1_ANGLE=7.5;
 const double MIN_X=-130;
 const double MAX_X=130;
@@ -25,20 +25,9 @@ double par = M_PI/180;    // angle en radians entre deux calculs de points (1°)
 bool microsec = true;     // Mode précis (0.1°) si true
 bool debug = true;        // Affiche les déplacements dans le moniteur série
 
-// FONCTIONS
-//void initServos();                  // place les servos en position intiale
-//void moveServos();                  // déplace les servos => (x,y)
-//bool isInside(double x, double y);  // teste si (x,y) se trouve dans la feuille A4
-//bool toAngle(double x, double y);   // cinématique inverse : (x,y) => angles s1 et s2
-//
-//void droite(double x1, double y1, double x2, double y2);
-//void rectangle(double x1, double y1, double x2, double y2);
-//void cercle(double xc, double yc, double r);
-//void spirale(double xc, double yc, double r, double pas);
-
 void log(char msg[], double t, double x, double y){
-    Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);
-    Serial.print(","); Serial.print(y);Serial.println(")");
+  Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);
+  Serial.print(","); Serial.print(y);Serial.println(")");
 }
 
 void log(double x, double y){
@@ -47,7 +36,6 @@ void log(double x, double y){
 }
 
 void lectureCorrectif(){
-
   delay(500);
   int E_MSB = EEPROM.read(0);
   int E_LSB = EEPROM.read(1);
