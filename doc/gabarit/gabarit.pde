@@ -10,7 +10,7 @@ int pgWidth=842,
 int dy=60;
 
 void setup() {
-  size(pgWidth, pgHeight, PDF, "calibrage.pdf");
+  size(842, 595, PDF, "calibrage.pdf");
   background(255);
   //strokeCap(SQUARE);  // Commenter pour arrondi
 }
@@ -27,12 +27,22 @@ void mire(){
   float fromX = map (arcX-10, 0, 297, 0, pgWidth);
   float toX = map (arcX+10, 0, 297, 0, pgWidth);
 
-  //dessin
+  //dessin mire
   ellipseMode(CENTER);
   arc(xc, yc, dx, dy, 7*PI/8, 9*PI/8);
   line(fromX, yc, toX, yc);
   
   // axes
+  
+  // quadrillage pour aligner le bras
+  
+  // zone inaccessible
+  fill(255,0,0);
+  xc = map (midX+lg1, 0, 297, 0, pgWidth);
+  yc = map (230, 0, 210, 0, pgHeight); // 210 + décalage axe/feuille
+  dx = map (2*lg2, 0, 297, 0, pgWidth);
+  dy = map (2*lg2, 0, 210, 0, pgHeight);
+  arc(xc, yc, dx, dy, 0, PI);
   
   // textes
   textSize(32);
@@ -49,5 +59,3 @@ void draw() {
   mire();
   exit();
 }
-
-
