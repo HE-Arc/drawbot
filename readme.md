@@ -18,10 +18,10 @@ L'atelier se déroule en 3 phases :
 
 Dans /src :
 
-* reglages : projet Arduino permettant d'ajuster finement la géométrie des bras
-* programme : projet Arduino qui permet d'exécuter un dessin avec le robot
-* generateur : projet Qt pour dessiner à la souris et écrire la liste de points qui consitue le dessin dans un fichier texte. Ce fichier texte pourra ensuite être repris dans programme, pour être dessiné par le robot
-* simulateur : projet Processing permettant d'afficher le dessin d'un programme sur l'écran avant de le dessiner avec le robot
+* *reglages* : projet Arduino permettant d'ajuster finement la géométrie des bras
+* *programme* : projet Arduino qui permet d'exécuter un dessin avec le robot
+* *generateur* : projet Qt pour dessiner à la souris et écrire la liste de points qui consitue le dessin dans un fichier texte. Ce fichier texte pourra ensuite être repris dans programme, pour être dessiné par le robot
+* *simulateur* : projet Processing permettant d'afficher le dessin d'un programme sur l'écran avant de le dessiner avec le robot
 
 ## Licence
 
