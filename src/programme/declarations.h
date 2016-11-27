@@ -3,6 +3,8 @@
 #include <EEPROM.h>
 #include <math.h>
 
+#pragma once
+
 // CONSTANTES
 const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
 const int VITESSE=0;                // Pause en ms après un mouvement
@@ -16,7 +18,7 @@ const float MAX_X=130;
 const float MIN_Y=10;
 const float MAX_Y=205;
 
-// VARIABLES 
+// VARIABLES
 Servo s1, s2;             // s1: épaule (en A), s2: coude (en B)
 float lg1=149, lg2=130;  // longueur des bras (mm)  lg1 = AB (bras), lg2 = BC (avant-bras)
 float angle1, angle2;    // position servos en degrés de s1 et s2
@@ -70,7 +72,7 @@ void lectureCorrectif(){
 
   int etendue = MAX_US-MIN_US;
   int cor_epaule = epaule-1500;        // écarts en us
-  int cor_coude = coude-1500; 
+  int cor_coude = coude-1500;
 
   COR_S1 = cor_epaule * 180./etendue +SHIFT_S1_ANGLE;   //écarts en degrés
   COR_S2 = cor_coude * 180./etendue;

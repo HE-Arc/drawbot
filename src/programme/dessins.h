@@ -1,3 +1,4 @@
+/*
 // Jusqu'à la ligne 130, le code est identique à simulateur/dessins.pde
 // https://en.wikipedia.org/wiki/Hypotrochoid
 void etoile(float cx, float cy, float r) // étoile à 5 branches
@@ -8,9 +9,29 @@ void etoile(float cx, float cy, float r) // étoile à 5 branches
     x = cx + (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
     y = cy + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     LOG("HYPO", t, x, y);
-  }  
+  }
+}
+
+*/
+#include "shared.h"
+#include "declarations.h"
+
+void etoile(double cx=0, double cy=100, double r=50) {
+  double x;
+  double y;
+  double position;
+  double t;
+
+  for(t = 0; t < 6*M_PI; t += par) {
+    position = 6 * M_PI / t;
+    if (_etoile(x, y, cx, cy, r, position)) {
+      toAngle(x, y);
+      moveServos();
+      LOG("HYPO", t, x, y);
+    }
+  }
 }
 
 void etoile() { etoile(0, 100, 50); }
@@ -25,9 +46,9 @@ void fleur(float cx, float cy, float rTotal, float k) // rosace
     x = cx+(rCircleIn + rCircleOut)*cos(t) - rCircleOut*cos((rCircleIn/rCircleOut + 1)* t);
     y = cy + (rCircleIn + rCircleOut)*sin(t) - rCircleOut*sin((rCircleIn/rCircleOut + 1)*t);
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     LOG("EPI", t, x, y);
-  }  
+  }
 }
 
 void fleur() { fleur(0, 130, 40, 3); }
@@ -43,7 +64,7 @@ void coeur(float cx, float cy, float r)
     x = cx + r*(sin(t)*sin(t)*sin(t));
     y = cy + r*cos(t) - r*(cos(t)*cos(t)*cos(t)*cos(t));
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     LOG("COEUR", t, x, y);
   }
 }
@@ -54,23 +75,23 @@ void cercle(float cx, float cy, float r)
 {
   float x,y;
   for (float t = 0; t<2*M_PI; t+=par) {
-    x = r * cos(t) + cx; 
+    x = r * cos(t) + cx;
     y = r * sin(t) + cy;
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     LOG("CERCLE", t, x, y);
   }
 }
 
 void cercle() {cercle(0, 100, 30);}
 
-void spirale(float cx, float cy, float cr, float pas) 
+void spirale(float cx, float cy, float cr, float pas)
 {
   float x,y, ppd = pas/360; // pas par degré
 
   while (cr>3) {
     for(int t=0; t<360; t++){
-      x = cr * cos(t *(PI/180)) + cx; 
+      x = cr * cos(t *(PI/180)) + cx;
       y = cr * sin(t *(PI/180)) + cy;
       toAngle(x,y);
       moveServos();
@@ -86,18 +107,18 @@ void spirale() { spirale(0, 100, 50, 5); }
 void droite(float x1, float y1, float x2, float y2){
   float distance = sqrt(sq(x2-x1)+sq(y2-y1));
   float step = pas;    // d en mm
-  int nbPoints = (int)(1 + distance/step);    
-  float dx=(x2-x1)/nbPoints; 
+  int nbPoints = (int)(1 + distance/step);
+  float dx=(x2-x1)/nbPoints;
   float dy=(y2-y1)/nbPoints;
   float x=x1, y=y1;
-  
+
   for (int i=0; i<nbPoints; i++){
     toAngle(x,y);
-    moveServos();   
+    moveServos();
     x = x + dx;
-    y = y + dy;     
+    y = y + dy;
     LOG("DROITE", i, x, y);
-  }  
+  }
 }
 
 void rectangle(float x1, float y1, float x2, float y2){
@@ -114,7 +135,7 @@ void maison(float x, float y, float h){
   float yTopRoof=y+h/2.0;
   float yTopWall=y+h/6.0;
   float yBottom=y-h/2.0;
-  
+
   droite(xLeft,yBottom,xLeft,yTopWall);
   droite(xLeft,yTopWall,xRight,yBottom);
   droite(xRight,yBottom,xRight,yTopWall);
@@ -151,13 +172,12 @@ void mire(){
   float cx=0, cy=lg1-20, r=lg2;
   // arc
   for (float t = -M_PI/8; t<M_PI/8; t+=par) {
-    x = r * cos(t) + cx; 
+    x = r * cos(t) + cx;
     y = r * sin(t) + cy;
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     LOG("CALIBRAGE", t, x, y);
   }
   // retour et segment
-  
-}
 
+}

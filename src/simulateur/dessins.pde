@@ -2,15 +2,10 @@
 // https://en.wikipedia.org/wiki/Hypotrochoid
 void etoile(float cx, float cy, float r) // étoile à 5 branches
 {
-  float x,y;
-  float r1=r, r2=r*3/5, d=r;
-  for (float t = 0; t<6*PI; t+=par) {
-    x = cx + (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
-    y = cy + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
-    toAngle(x,y);
-    moveServos();    
-    if (debug) log("HYPO", t, x, y);
-  }  
+  for(PVector p : Dessin.etoile(cx, cy, r)) {
+    toAngle(p.x, p.y);
+    moveServos();
+  }
 }
 
 void etoile() { etoile(0, 100, 50); }
