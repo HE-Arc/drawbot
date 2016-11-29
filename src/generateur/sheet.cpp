@@ -6,7 +6,7 @@ Sheet::Sheet(QWidget *parent) : QWidget(parent)
 {
     fileNew();
     mag = 3;        // 3px for 1mm on the robot
-    setWindowTitle("Sans Titre[*] - Dessin pour drawbot Arc");
+    setWindowTitle("Sans Titre[*] - Generateur de points");
     setFixedSize(297*mag,210*mag);
 }
 
@@ -113,8 +113,8 @@ void Sheet::readFile()
             x = c[0].toDouble();
             y = c[1].toDouble();
 
-            x = x*mag + 148.5*mag;
-            y = -y*mag + 210*mag;
+            x = (x*mag/100 + 148.5*mag);
+            y = (-y*mag/100 + 210*mag);
 
             p = QPoint(x, y);
             qDebug() << p;
@@ -161,12 +161,12 @@ void Sheet::save()
         }
 
         QTextStream sout(&fileDest);
-        double x, y;
-        sout << "double liste[] = {" << endl;
+        int x, y;
+        sout << " const int liste[] PROGMEM = {" << endl;
         foreach(QPoint p, liste) {
         // Chgt coordonnées widget -> feuille
-            x = (p.x() - 148.5*mag)/mag;
-            y = (210*mag - p.y())/mag;
+            x = 100*(p.x() - 148.5*mag)/mag;
+            y = 100*(210*mag - p.y())/mag;
             sout << QString::number(x) << ", " << QString::number(y) << ", " << endl;
         }
         sout << "};" << endl;

@@ -13,9 +13,6 @@ class Sheet : public QWidget
       Q_OBJECT
       public:
         Sheet(QWidget *parent = 0);
-//        ~Sheet();
-//        QString getFileName();
-//        QStringList getFileNames();
 
       public slots:
         void fileNew();
@@ -43,7 +40,6 @@ class Sheet : public QWidget
         QStack<int> pileUndo;
         double zoom, mag;
         QString fileName;
-        //MainWin* mw;
         void updateStatus();
 
       signals:

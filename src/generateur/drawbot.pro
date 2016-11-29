@@ -3,7 +3,7 @@
 ######################################################################
 QT += widgets
 TEMPLATE = app
-TARGET = drawbot
+TARGET = generateur
 DEPENDPATH += .
 INCLUDEPATH += .
 

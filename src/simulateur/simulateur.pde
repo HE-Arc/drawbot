@@ -22,14 +22,14 @@ void draw() {
   translate(width/2, height);
   scale(1, -1);
   
-//  dessineListe();
+  dessineListe();
   
-  spirale(-100, 170, 25, 5);
-  cercle(-30, 170, 25);
-  fleur(40, 170, 25, 7);
-  coeur(-100, 100, 25);
-  etoile(-30, 100, 25);
-  maison(-100, 35, 50);
+  //spirale(-100, 170, 25, 5);
+  //cercle(-30, 170, 25);
+  //fleur(40, 170, 25, 7);
+  //coeur(-100, 100, 25);
+  //etoile(-30, 100, 25);
+  //maison(-100, 35, 50);
 }
 
 boolean toAngle(float x, float y) {

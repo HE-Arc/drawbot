@@ -31,13 +31,11 @@ MainWin::MainWin(QWidget *parent) : QMainWindow(parent)
 }
 void MainWin::writeSettings()
 {
-    QSettings settings("./mainwindow.ini", QSettings::IniFormat);
+    QSettings settings("./prefs.ini", QSettings::IniFormat);
 
     settings.clear();
     settings.beginGroup("MainWindow");
-    settings.setValue("size", size());
-    settings.setValue("pos", pos());
-    settings.setValue("maximized", isMaximized());
+         settings.setValue("pos", pos());
     settings.endGroup();
 
     settings.beginGroup("Fichiers");
@@ -52,20 +50,10 @@ void MainWin::writeSettings()
 
 void MainWin::readSettings()
 {
-    QSettings settings("./mainwindow.ini", QSettings::IniFormat);
+    QSettings settings("./prefs.ini", QSettings::IniFormat);
 
     settings.beginGroup("MainWindow");
-    if(settings.value("maximized").toBool())
-    {
-        resize(800,400);
-        move(200, 200);
-        showMaximized ();
-    }
-    else
-    {
-        resize(settings.value("size", QSize(800, 400)).toSize());
         move(settings.value("pos", QPoint(200, 200)).toPoint());
-    }
     settings.endGroup();
 
     settings.beginGroup("Fichiers");
@@ -191,14 +179,12 @@ void MainWin::setTitle(const QString &fileName)
      else
          shownName = QFileInfo(fileName).absoluteFilePath();
 
-     setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("Tableau Blanc")));
-//     qDebug() << "setTitle";
+     setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("Générateur de points")));
 }
 
 void MainWin::setStatus(const QString &msg){
-  //  statusBar()->showMessage(msg);
     infoStatus->setText(msg);
 }
 
 void MainWin::about()
-{   QMessageBox::information(this, tr("A Propos"), tr("Tableau Blanc\nDessin à main levée\nAvec sérialisation")); }
+{   QMessageBox::information(this, tr("A Propos"), tr("Point List Generator\nDrawbot\nhttps://github.com/HE-Arc/drawbot")); }

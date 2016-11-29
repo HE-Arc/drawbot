@@ -1,5 +1,5 @@
 
-bool isInside(double x, double y){
+bool isInside(float x, float y){
   if( x<MIN_X+COR_X ){
     Serial.print("OUT X");
     Serial.print(x); 
@@ -38,9 +38,9 @@ bool isInside(double x, double y){
   else return false;
 }
 
-bool toAngle(double x, double y){
+bool toAngle(float x, float y){
   // Merci Julien Marchand et François Tièche !!!
-  double r, t, alpha, beta, gamma,  halfPerimeter, angleR1, angleR2;
+  float r, t, alpha, beta, gamma,  halfPerimeter, angleR1, angleR2;
   bool lefty = false;   // pas utile avec la config mécanique choisie
 
   old1 = angle1;
@@ -92,18 +92,18 @@ bool toAngle(double x, double y){
 void moveServos()
 {
   // Si grande distance ralentir mouvement
-/*  double delta =3;
+/*  float delta =3;
   int inc;
  
   if (abs(angle1-old1)>delta) {
     if (angle1 > old1) {
-      for (double i=old1; i<angle1; i+=1) {
+      for (float i=old1; i<angle1; i+=1) {
         s1.write(i);
         delay(VITESSE);
       }
     }
     else {
-      for (double i=angle1; i<old1; i-=1) {
+      for (float i=angle1; i<old1; i-=1) {
         s1.write(i);
         delay(VITESSE);
       }      
@@ -112,13 +112,13 @@ void moveServos()
 
   if (abs(angle2-old2)>delta) {
     if (angle2 > old2) {
-      for (double i=old2; i<angle2; i+=1) {
+      for (float i=old2; i<angle2; i+=1) {
         s2.write(i);
         delay(VITESSE);
       }
     }
     else {
-      for (double i=angle2; i<old2; i-=1) {
+      for (float i=angle2; i<old2; i-=1) {
         s2.write(i);
         delay(VITESSE);
       }      

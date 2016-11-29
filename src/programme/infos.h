@@ -16,20 +16,22 @@ A : Position servo s1 (pos=0, AB est orienté à droite pour pos=180)
 B : Position servo s2 (pos=180, C proche de A pour pos=0)
 C : Position crayon 
 
- TODO :
+TODO :
  Détailler angles pour calcul ciné inverse dans doc ?
  Pos initiale => 1er point du dessin ???
- determiner valeur min S2 pour éviter collision entre les 2 bras => protéger dans toAngle()
  interactions avec le clavier ?
- taille max d'une liste de points ? https://www.arduino.cc/en/Reference/PROGMEM ? downcaster doubles ?
  Terminer mire : dessin segment et retour
  eviter positionnement avec attach (program.ino:9-10)
-
+ incliner bras -40° pour augmenter couverture
+ 
 TESTER :
  Ralentissement du déplacement si deltaAngle > 3° (décommenter cinematique.h:60-92)
+ 
+OK: 
  lecture du zero dans eprom
  pos et taille figures
- 
+ taille max d'une liste de points ? => 5700 pts x int x int (22'800 bytes / 30720 progmem)
+ determiner valeur min S2 pour éviter collision entre les 2 bras => protéger dans toAngle()
  Correctifs origine et angles ->ok
  Limiter déplacement à feuille ->ok
  simplifier droite()->ok
@@ -53,6 +55,8 @@ https://github.com/HE-Arc/drawbot
 
 */
 
+
+// Pour tester les servos
 while(true) {
   s1.write(0);Serial.println("0");delay(1000);
   s1.write(90);Serial.println("90");delay(1000);

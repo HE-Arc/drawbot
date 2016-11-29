@@ -14,15 +14,16 @@ void setup() {
 void loop() {
   Serial.println("Loop");
   lectureCorrectif();
+  dessineListe();
 
-  spirale(-100, 170, 25);
-  cercle(-30, 170, 25);
-  fleur(40, 170, 25);
-  coeur(-100, 100, 25);
-  etoile(-30, 100, 25);
-  maison(-100, 35, 50);
+//  spirale(-100, 170, 25);
+//  cercle(-30, 170, 25);
+//  fleur(40, 170, 25);
+//  coeur(-100, 100, 25);
+//  etoile(-30, 100, 25);
+//  maison(-100, 35, 50);
   
-//  double delta=0.0;
+//  float delta=0.0;
 //  rectangle(MIN_X+delta, MIN_Y+delta, MAX_X-delta, MAX_Y-delta);
   
 //  cercle(50, 120, 20);
@@ -31,6 +32,7 @@ void loop() {
 //  coeur(0,100,50);
 
   Serial.println("End \n");
+  Serial.flush();
   exit(0);
 }
 
