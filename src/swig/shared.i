@@ -1,29 +1,31 @@
-%module shared
+%module(directors="1") shared;
 
 %include "typemaps.i"
 %apply float *OUTPUT { float& x }
 %apply float *OUTPUT { float& y }
 
 %{
-#include <vector>
+#include "src/declarations.h"
+#include "src/callback.h"
+#include "src/caller.h"
+#include "../programme/shared.h"
 
-extern bool _etoile(
-    float& x,
-    float& y,
-    float cx,
-    float cy,
-    float r,
-    float par=-1);
+#define LOG
 
+extern Caller* caller;
 %}
 
-extern bool _etoile(
-    float& x,
-    float& y,
-    float cx,
-    float cy,
-    float r,
-    float par=-1);
+%feature("director") Callback;
+
+%include "src/caller.h"
+%include "src/callback.h"
+
+extern void etoile(float cx, float cy, float r, float par=-1);
+
+extern void moveServos();
+extern void toAngle(float x, float y);
+
+extern Caller* caller;
 
 %pragma(java) jniclasscode=%{
     static {

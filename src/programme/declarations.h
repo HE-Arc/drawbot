@@ -30,8 +30,6 @@ bool debug = true;        // Affiche les déplacements dans le moniteur série
 
 // DEBOGGAGE
 
-#define DEBUG
-
 #ifdef DEBUG
   #define LOG(...) logging(__VA_ARGS__)
 

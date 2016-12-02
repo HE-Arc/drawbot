@@ -1,4 +1,3 @@
-
 bool isInside(float x, float y){
   if( x < MIN_X+COR_X ){
     LOG("OUT X", x, "<", MIN_X + COR_X);

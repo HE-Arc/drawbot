@@ -13,26 +13,9 @@ void etoile(float cx, float cy, float r) // étoile à 5 branches
     LOG("HYPO", t, x, y);
   }
 }
-
 */
+
 #include "shared.h"
-#include "declarations.h"
-
-void etoile(double cx=0, double cy=100, double r=50) {
-  double x;
-  double y;
-  double position;
-  double t;
-
-  for(t = 0; t < 6*M_PI; t += par) {
-    position = 6 * M_PI / t;
-    if (_etoile(x, y, cx, cy, r, position)) {
-      toAngle(x, y);
-      moveServos();
-      LOG("HYPO", t, x, y);
-    }
-  }
-}
 
 void etoile() { etoile(0, 100, 50); }
 
