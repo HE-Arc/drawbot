@@ -26,15 +26,37 @@ float par = M_PI/180;    // angle en radians entre deux calculs de points (1°)
 bool microsec = true;     // Mode précis (0.1°) si true
 bool debug = true;        // Affiche les déplacements dans le moniteur série
 
-void log(char msg[], float t, float x, float y){
-  Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);
-  Serial.print(","); Serial.print(y);Serial.println(")");
-}
+// DEBOGGAGE
 
-void log(float x, float y){
-  Serial.print("angles: S1:");Serial.print(angle1);Serial.print(" S2:");Serial.println(angle2);
-  Serial.print(" (x,y) : (");Serial.print(x);Serial.print(",");Serial.print(y);Serial.println(")\n");
-}
+#define DEBUG
+
+#ifdef DEBUG
+  #define LOG(...) logging(__VA_ARGS__)
+
+  // Variations autour du logging.
+  void logging(char const msg[], float t, float x, float y){
+    Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);Serial.print(","); Serial.print(y);Serial.println(")");
+    Serial.println();
+  }
+
+  void logging(float x, float y){
+    Serial.print("angles: S1:");Serial.print(angle1);Serial.print(" S2:");Serial.println(angle2);
+    Serial.print(" (x,y) : (");Serial.print(x);Serial.print(",");Serial.print(y);Serial.println(")");
+    Serial.println();
+  }
+
+  void logging(char const msg[], float x, char const op[], float y) {
+    Serial.print("info: ");Serial.print(msg);Serial.print(x);Serial.print(op);Serial.print(y);Serial.println();
+    Serial.println();
+  }
+
+  void logging(char const msg[]) {
+    Serial.print(msg);
+  }
+
+#else
+  #define LOG
+#endif
 
 void lectureCorrectif(){
   delay(500);

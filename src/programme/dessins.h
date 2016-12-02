@@ -4,12 +4,12 @@ void etoile(float cx, float cy, float r) // étoile à 5 branches
 {
   float x,y;
   float r1=r, r2=r*3/5, d=r;
-  for (float t = 0; t<6*PI; t+=par) {
+  for (float t = 0; t<6*M_PI; t+=par) {
     x = cx + (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
     y = cy + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
     toAngle(x,y);
     moveServos();    
-    if (debug) log("HYPO", t, x, y);
+    LOG("HYPO", t, x, y);
   }  
 }
 
@@ -21,12 +21,12 @@ void fleur(float cx, float cy, float rTotal, float k) // rosace
   float rCircleOut=rTotal/(k+1.0);
   float rCircleIn=rCircleOut*k;
   float x,y;
-  for (float t = 0; t<2*PI; t+=par) {
+  for (float t = 0; t<2*M_PI; t+=par) {
     x = cx+(rCircleIn + rCircleOut)*cos(t) - rCircleOut*cos((rCircleIn/rCircleOut + 1)* t);
     y = cy + (rCircleIn + rCircleOut)*sin(t) - rCircleOut*sin((rCircleIn/rCircleOut + 1)*t);
     toAngle(x,y);
     moveServos();    
-    if (debug) log("EPI", t, x, y);
+    LOG("EPI", t, x, y);
   }  
 }
 
@@ -39,12 +39,12 @@ void coeur(float cx, float cy, float r)
   float x,y;
   float taille=50;
   cy=cy+2.0*r*1.5/5.0;
-  for (float t = 0; t<2*PI; t+=par) {
+  for (float t = 0; t<2*M_PI; t+=par) {
     x = cx + r*(sin(t)*sin(t)*sin(t));
     y = cy + r*cos(t) - r*(cos(t)*cos(t)*cos(t)*cos(t));
     toAngle(x,y);
     moveServos();    
-    if (debug) log("COEUR", t, x, y);
+    LOG("COEUR", t, x, y);
   }
 }
 
@@ -53,12 +53,12 @@ void coeur() { coeur(0, 130, 40); }
 void cercle(float cx, float cy, float r)
 {
   float x,y;
-  for (float t = 0; t<2*PI; t+=par) {
+  for (float t = 0; t<2*M_PI; t+=par) {
     x = r * cos(t) + cx; 
     y = r * sin(t) + cy;
     toAngle(x,y);
     moveServos();    
-    if (debug) log("CERCLE", t, x, y);
+    LOG("CERCLE", t, x, y);
   }
 }
 
@@ -76,7 +76,7 @@ void spirale(float cx, float cy, float cr, float pas)
       moveServos();
       cr-=ppd;
       if (cr<1) break;
-    if (debug) log("SPIRALE", t, x, y);
+      LOG("SPIRALE", t, x, y);
     }
   }
 }
@@ -96,7 +96,7 @@ void droite(float x1, float y1, float x2, float y2){
     moveServos();   
     x = x + dx;
     y = y + dy;     
-    if (debug) log("DROITE", i, x, y);
+    LOG("DROITE", i, x, y);
   }  
 }
 
@@ -142,7 +142,7 @@ void dessineListe() {
     y = (int)pgm_read_word(liste+i+1/100);
     toAngle(x, y);
     moveServos();
-    if (debug) log("LISTE", 0, x, y);
+    LOG("LISTE", 0, x, y);
   }
 }
 
@@ -150,12 +150,12 @@ void mire(){
   float x,y;
   float cx=0, cy=lg1-20, r=lg2;
   // arc
-  for (float t = -PI/8; t<PI/8; t+=par) {
+  for (float t = -M_PI/8; t<M_PI/8; t+=par) {
     x = r * cos(t) + cx; 
     y = r * sin(t) + cy;
     toAngle(x,y);
     moveServos();    
-    if (debug) log("CALIBRAGE", t, x, y);
+    LOG("CALIBRAGE", t, x, y);
   }
   // retour et segment
   
