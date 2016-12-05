@@ -1,4 +1,4 @@
-%module(directors="1") shared;
+%module(directors="1") Dessin;
 
 %include "typemaps.i"
 %apply float *OUTPUT { float& x }
@@ -31,10 +31,10 @@ extern Caller* caller;
     static {
         java.io.File path = new java.io.File(".");
         try {
-            path = new java.io.File(shared.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            path = new java.io.File(Dessin.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
         } catch(java.net.URISyntaxException use) {
             System.err.println(use.getMessage());
         }
-        System.load(path.getParent() + "/shared.so");
+        System.load(path.getParent() + "/Dessin.so");
     }
 %}

@@ -10,7 +10,7 @@ float zoom = 4;
 
 void setup() {
   // Callback pour les appels C++ à moveServos et toAngle.
-  shared.getCaller().setCallback(new Callback(){
+  Dessin.getCaller().setCallback(new Callback(){
     @Override
     public void moveServos() {
       line(xold, yold, xmm, ymm);
@@ -42,7 +42,7 @@ void draw() {
   //cercle(-30, 170, 25);
   //fleur(40, 170, 25, 7);
   //coeur(-100, 100, 25);
-  shared.etoile(-100, 100, 25);
+  Dessin.etoile(-100, 100, 25);
   etoile(-30, 100, 25);
   //maison(-100, 35, 50);
 }

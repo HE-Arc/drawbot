@@ -12,7 +12,7 @@ SWIG=swig
 CPP=g++
 COPTS=-fpic -fno-strict-aliasing
 
-LIBRARY=shared
+LIBRARY=Dessin
 PROCESSING_CORE_JAR=/usr/share/processing/core/library/core.jar
 
 SWIGDIR=src/swig
@@ -43,7 +43,7 @@ $(OBJDIR)/declarations.o: $(SRCDIR)/declarations.*
 	$(CPP) -c $(COPTS) $(SRCDIR)/declarations.cpp \
 		-o "$@"
 
-$(OBJDIR)/$(LIBRARY)_wrap.o: $(SWIGDIR)/shared_wrap.cxx
+$(OBJDIR)/$(LIBRARY)_wrap.o: $(SWIGDIR)/$(LIBRARY)_wrap.cxx
 	mkdir -p $(OBJDIR)
 	$(CPP) -c $(COPTS) "$^" \
 	    -I$(JAVA_INCLUDE) \
