@@ -9,7 +9,20 @@ float lg1 = 149, lg2 = 130;  // longueur des bras (mm)  lg1 = AB (bras), lg2 = B
 float zoom = 4;
 
 void setup() {
-  Dessin.setPApplet((PApplet) this, zoom);
+  // Callback pour les appels C++ à moveServos et toAngle.
+  shared.getCaller().setCallback(new Callback(){
+    @Override
+    public void moveServos() {
+      line(xold, yold, xmm, ymm);
+      xold=xmm; yold=ymm;
+      if (debug) log("m", 0, xmm, ymm);
+    }
+    @Override
+    public void toAngle(float x, float y) {
+      xold=xmm; yold=ymm;
+      xmm=x*zoom; ymm=y*zoom;
+    }
+  });
 //  size(pgWidth, pgHeight, PDF, "simulation.pdf");
   background(255);
   stroke(0);
@@ -49,5 +62,5 @@ void moveServos() {
 
 void log (String text, float t, float x, float y) {
   String msg = text + " // t:" + t + " x=" + x + " y=" + y;
-  println(msg);  
+  println(msg);
 }
