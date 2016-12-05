@@ -8,7 +8,7 @@
 #include "src/declarations.h"
 #include "src/callback.h"
 #include "src/caller.h"
-#include "../programme/shared.h"
+#include "../programme/dessins.h"
 
 #define LOG
 
@@ -20,7 +20,14 @@ extern Caller* caller;
 %include "src/caller.h"
 %include "src/callback.h"
 
-extern void etoile(float cx, float cy, float r, float par=-1);
+extern void etoile(float cx, float cy, float r);
+extern void fleur(float cx, float cy, float rTotal, float k);
+extern void coeur(float cx, float cy, float r);
+extern void cercle(float cx, float cy, float r);
+extern void spirale(float cx, float cy, float cr, float pas);
+extern void droite(float x1, float y1, float x2, float y2);
+extern void rectangle(float x1, float y1, float x2, float y2);
+extern void maison(float x, float y, float h);
 
 extern void moveServos();
 extern void toAngle(float x, float y);

@@ -1,4 +1,14 @@
-/*
+#include <math.h>
+
+#ifndef LOG
+float pas = .5;
+float par = M_PI / 180;
+float sq(float x) { return x * x; }
+#ifndef DEBUG
+#define LOG
+#endif
+#endif
+
 // Jusqu'à la ligne 130, le code est identique à simulateur/dessins.pde
 // https://en.wikipedia.org/wiki/Hypotrochoid
 void etoile(float cx, float cy, float r) // étoile à 5 branches
@@ -13,9 +23,6 @@ void etoile(float cx, float cy, float r) // étoile à 5 branches
     LOG("HYPO", t, x, y);
   }
 }
-*/
-
-#include "shared.h"
 
 void etoile() { etoile(0, 100, 50); }
 
@@ -74,8 +81,8 @@ void spirale(float cx, float cy, float cr, float pas)
 
   while (cr>3) {
     for(int t=0; t<360; t++){
-      x = cr * cos(t *(PI/180)) + cx;
-      y = cr * sin(t *(PI/180)) + cy;
+      x = cr * cos(t *(M_PI/180)) + cx;
+      y = cr * sin(t *(M_PI/180)) + cy;
       toAngle(x,y);
       moveServos();
       cr-=ppd;
@@ -130,37 +137,3 @@ void maison(float x, float y, float h){
 }
 
 void maison() {maison(0, 100, 50);}
-
-// Le code qui suit est propre à dessins.h
-void dessineListe() {
-  int max = sizeof(liste)/sizeof(int);
-  float x,y;
-
-  // tableau de points dans la mémoire programme
-  //  https://www.arduino.cc/en/Reference/PROGMEM
-  x = (int)pgm_read_word(liste)/100;
-  y = (int)pgm_read_word(liste+1)/100;
-  toAngle(x, y);
-  for (int i=0; i<max-1; i+=2) {
-    x = (int)pgm_read_word(liste+i)/100;
-    y = (int)pgm_read_word(liste+i+1/100);
-    toAngle(x, y);
-    moveServos();
-    LOG("LISTE", 0, x, y);
-  }
-}
-
-void mire(){
-  float x,y;
-  float cx=0, cy=lg1-20, r=lg2;
-  // arc
-  for (float t = -M_PI/8; t<M_PI/8; t+=par) {
-    x = r * cos(t) + cx;
-    y = r * sin(t) + cy;
-    toAngle(x,y);
-    moveServos();
-    LOG("CALIBRAGE", t, x, y);
-  }
-  // retour et segment
-
-}

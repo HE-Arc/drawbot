@@ -3,6 +3,7 @@
 #include "declarations.h"
 #include "cinematique.h"
 #include "liste.h"
+#include "dessine_liste.h"
 #include "dessins.h"
 
 void setup() {

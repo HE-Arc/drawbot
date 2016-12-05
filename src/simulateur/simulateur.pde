@@ -38,13 +38,12 @@ void draw() {
 
   dessineListe();
 
-  //spirale(-100, 170, 25, 5);
-  //cercle(-30, 170, 25);
-  //fleur(40, 170, 25, 7);
-  //coeur(-100, 100, 25);
-  Dessin.etoile(-100, 100, 25);
-  etoile(-30, 100, 25);
-  //maison(-100, 35, 50);
+  Dessin.spirale(-100, 170, 25, 5);
+  Dessin.cercle(-30, 170, 25);
+  Dessin.fleur(40, 170, 25, 7);
+  Dessin.coeur(-100, 100, 25);
+  Dessin.etoile(-30, 100, 25);
+  Dessin.maison(-100, 35, 50);
 }
 
 boolean toAngle(float x, float y) {
