@@ -2,7 +2,7 @@
 
 ![Prototype du bras](http://www.he-arc.ch/sites/www.he-arc.ch/files/ING/haute-ecole-arc-ingenierie-atelier-robot-dessinateur.jpg "Prototype du bras")
 
-Ce robot peut dessiner des formes simples à partir des mouvements des moteurs situés aux 2 articulations. Les moteurs sont contrôlés par un [arduino][https://www.arduino.cc/]. Le code proposé permet de tracer des droites, des cercles, des spirales et des fonctions mathématiques (formes de coeur ou d'étoile, par exemple...) après avoir converti la position à atteindre en angles qui correspondent à la position des moteurs des articulations.
+Ce robot peut dessiner des formes simples à partir des mouvements des moteurs situés aux 2 articulations. Les moteurs sont contrôlés par un [arduino](https://www.arduino.cc/). Le code proposé permet de tracer des droites, des cercles, des spirales et des fonctions mathématiques (formes de coeur ou d'étoile, par exemple...) après avoir converti la position à atteindre en angles qui correspondent à la position des moteurs des articulations. Le [voir](https://youtu.be/FAsezaFMFRI) en action.
 
 ## Atelier 
 
@@ -15,6 +15,8 @@ L'atelier se déroule en 3 phases :
 3. Présentation et modification du logiciel pour personnaliser les dessins
 
 ## Code 
+
+[Télécharger](https://github.com/HE-Arc/drawbot/releases) code arduino et programme de dessin.
 
 Dans /src :
 
