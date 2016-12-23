@@ -3,6 +3,8 @@
 #include <EEPROM.h>
 #include <math.h>
 
+#pragma once
+
 // CONSTANTES
 const int S1=7, S2=8;               // Sorties arduino S1:bras, S2:avant-bras
 const int VITESSE=0;                // Pause en ms après un mouvement
@@ -16,7 +18,7 @@ const float MAX_X=130;
 const float MIN_Y=10;
 const float MAX_Y=205;
 
-// VARIABLES 
+// VARIABLES
 Servo s1, s2;             // s1: épaule (en A), s2: coude (en B)
 float lg1=149, lg2=130;  // longueur des bras (mm)  lg1 = AB (bras), lg2 = BC (avant-bras)
 float angle1, angle2;    // position servos en degrés de s1 et s2
@@ -26,15 +28,35 @@ float par = M_PI/180;    // angle en radians entre deux calculs de points (1°)
 bool microsec = true;     // Mode précis (0.1°) si true
 bool debug = true;        // Affiche les déplacements dans le moniteur série
 
-void log(char msg[], float t, float x, float y){
-  Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);
-  Serial.print(","); Serial.print(y);Serial.println(")");
-}
+// DEBOGGAGE
 
-void log(float x, float y){
-  Serial.print("angles: S1:");Serial.print(angle1);Serial.print(" S2:");Serial.println(angle2);
-  Serial.print(" (x,y) : (");Serial.print(x);Serial.print(",");Serial.print(y);Serial.println(")\n");
-}
+#ifdef DEBUG
+  #define LOG(...) logging(__VA_ARGS__)
+
+  // Variations autour du logging.
+  void logging(char const msg[], float t, float x, float y){
+    Serial.print(msg);Serial.print(" - t:");Serial.print(t);Serial.print(":(");Serial.print(x);Serial.print(","); Serial.print(y);Serial.println(")");
+    Serial.println();
+  }
+
+  void logging(float x, float y){
+    Serial.print("angles: S1:");Serial.print(angle1);Serial.print(" S2:");Serial.println(angle2);
+    Serial.print(" (x,y) : (");Serial.print(x);Serial.print(",");Serial.print(y);Serial.println(")");
+    Serial.println();
+  }
+
+  void logging(char const msg[], float x, char const op[], float y) {
+    Serial.print("info: ");Serial.print(msg);Serial.print(x);Serial.print(op);Serial.print(y);Serial.println();
+    Serial.println();
+  }
+
+  void logging(char const msg[]) {
+    Serial.print(msg);
+  }
+
+#else
+  #define LOG
+#endif
 
 void lectureCorrectif(){
   delay(500);
@@ -48,7 +70,7 @@ void lectureCorrectif(){
 
   int etendue = MAX_US-MIN_US;
   int cor_epaule = epaule-1500;        // écarts en us
-  int cor_coude = coude-1500; 
+  int cor_coude = coude-1500;
 
   COR_S1 = cor_epaule * 180./etendue +SHIFT_S1_ANGLE;   //écarts en degrés
   COR_S2 = cor_coude * 180./etendue;

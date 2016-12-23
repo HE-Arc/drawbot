@@ -1,61 +1,43 @@
-
 bool isInside(float x, float y){
-  if( x<MIN_X+COR_X ){
-    Serial.print("OUT X");
-    Serial.print(x); 
-    Serial.print("<");
-    Serial.print(MIN_X+COR_X);
-    Serial.println(); 
+  if( x < MIN_X+COR_X ){
+    LOG("OUT X", x, "<", MIN_X + COR_X);
     return false;
   }
-  if( x>MAX_X+COR_X ){
-    Serial.print("OUT X");
-    Serial.print(x); 
-    Serial.print(">");
-    Serial.print(MAX_X+COR_X);
-    Serial.println(); 
+  if( x > MAX_X+COR_X ){
+    LOG("OUT X", x, ">", MAX_X + COR_X);
     return false;
   }
-  if( y<MIN_Y + COR_Y ){
-    Serial.print("OUT Y");
-    Serial.print(y); 
-    Serial.print("<");
-    Serial.print(MIN_Y);
-    Serial.println();
+  if( y < MIN_Y+COR_Y ){
+    LOG("OUT Y", y, "<", MIN_Y + COR_Y);
     return false;
   }
-  if( y>MAX_Y + COR_Y){
-    Serial.print("OUT Y");
-    Serial.print(y); 
-    Serial.print(">");
-    Serial.print(MAX_Y+ COR_Y);
-    Serial.println(); 
+  if( y > MAX_Y + COR_Y){
+    LOG("OUT Y", y, ">", MAX_Y + COR_Y);
     return false;
   }
   return true;
-  
-  if ( (x>MIN_X)&&(x<MAX_X)&&(y>MIN_Y)&&(y<MAX_Y) ) return true;
-  else return false;
 }
 
 bool toAngle(float x, float y){
   // Merci Julien Marchand et François Tièche !!!
-  float r, t, alpha, beta, gamma,  halfPerimeter, angleR1, angleR2;
+  float r, t, alpha, beta, gamma, halfPerimeter, angleR1, angleR2;
   bool lefty = false;   // pas utile avec la config mécanique choisie
 
   old1 = angle1;
   old2 = angle2;
 
-  x+=COR_X;y+=COR_Y;    // Application correctifs translation
+  // Application correctifs translation
+  x+=COR_X;
+  y+=COR_Y;
 
-  r = sqrt(x*x+y*y);  
+  r = sqrt(x*x + y*y);
   alpha = atan2(y, x);
-  halfPerimeter = (lg1+lg2+r)/2;
+  halfPerimeter = (lg1+lg2+r) / 2.;
 
   // sin(beta/2)
   t = (halfPerimeter-lg1)*(halfPerimeter-r)/(lg1*r);
   if (t < 0.0) {
-    Serial.println("INACESSIBLE");
+    LOG("INACCESSIBLE\n");
     
     return false;
   }
@@ -65,7 +47,7 @@ bool toAngle(float x, float y){
   // sin(gamma/2)
   t = (halfPerimeter-lg1)*(halfPerimeter-lg2)/(lg1*lg2);
   if (t < 0.0) {
-     Serial.println("INACCESSIBLE");
+     LOG("INACCESSIBLE\n");
      return false;
   }
 
@@ -78,15 +60,21 @@ bool toAngle(float x, float y){
   if (isInside(x,y)) {
     angle1 = angleR1 * 180 / M_PI;
     angle2 = angleR2 * 180 / M_PI;
-    angle1+=COR_S1;angle2+=COR_S2;            // Application correctifs angles
-    if (angle2<ANGLE_MIN) angle2 = ANGLE_MIN; // Evite les collisionsq
+    // Application correctifs angles
+    angle1 += COR_S1;
+    angle2 += COR_S2;
+
+    if (angle2<ANGLE_MIN) {
+      // Evite les collisions
+      angle2 = ANGLE_MIN;
+    }
+
+    LOG(x, y);
+    return true;
   }
-  else {
-      Serial.println("HORS DE LA FEUILLE");
-      return false;
-  }
-  if (debug) log(x,y);
-  return true;
+
+  LOG("HORS DE LA FEUILLE\n");
+  return false;
 }
 
 void moveServos()
@@ -152,8 +140,8 @@ void initServos()
     s1.write(angle1);
     s2.write(angle2);
     delay(20);
-    if (debug) Serial.print(".");
+    LOG(".");
   }
-  if (debug) Serial.println("INIT");
+  LOG("INIT\n");
 }
 

@@ -8,9 +8,9 @@ void etoile(float cx, float cy, float r) // étoile à 5 branches
     x = cx + (r1-r2)*cos(t) + d*cos((r1-r2)/r2 * t);
     y = cy + (r1-r2)*sin(t) - d*sin((r1-r2)/r2 * t);
     toAngle(x,y);
-    moveServos();    
+    moveServos();
     if (debug) log("HYPO", t, x, y);
-  }  
+  }
 }
 
 void etoile() { etoile(0, 100, 50); }
