@@ -59,7 +59,9 @@ void loop() {
   Serial.println("           C  : pour entrer dans le mode reglage du coude ");
   Serial.println("                     S  : pour sortir et memoriser le reglage");
   Serial.println("                     +  : pour faire tourner le servo dans le sens positif (anti - horaire)");
+  Serial.println("                          puis ENTER pour faire tourner le servo");
   Serial.println("                     -  : pour faire tourner le servo dans le sens negatif (horaire)");
+  Serial.println("                          puis ENTER pour faire tourner le servo");
 
   int entree_clavier = 0;
   while ((entree_clavier != 'E') && (entree_clavier != 'C') && (entree_clavier != 86) ) { // 86=V ????
