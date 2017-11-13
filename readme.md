@@ -6,7 +6,7 @@ Ce robot peut dessiner des formes simples à partir des mouvements des moteurs s
 
 ## Atelier 
 
-Ce projet est conçu pour être monté et pris en main par des enfants à partir de 10 ans dans le cadre d'un atelier.
+Ce projet est conçu pour être monté et pris en main par des enfants à partir de 10 ans dans le cadre d'un atelier de 3 à 4h.
 
 L'atelier se déroule en 3 phases :
 
@@ -14,9 +14,18 @@ L'atelier se déroule en 3 phases :
 2. Assemblage du support (pièces pré-découpées en MDF)
 3. Présentation et modification du logiciel pour personnaliser les dessins
 
-## Code 
+## Code 
 
-[Télécharger](https://github.com/HE-Arc/drawbot/releases) code arduino et programme de dessin.
+Il faut commencer par installer [l'éditeur (IDE) arduino](https://www.arduino.cc/en/Main/Software)
+
+S'il s'agit d'un arduino nano provenant de Chine, il faut également installer son [driver](https://github.com/HE-Arc/drawbot/blob/master/driver_arduino_china.zip)
+
+Dans l'IDE arduino, il faut configurer le type d'arduino. Dans le Menu Outils, choisir :
+* Type de Carte : Arduino Nano
+* Processeur : ATmega 328
+* Port : Choisir la valeur la plus grande parmi les ports COM (il faut que l'arduino soit branché par cable USB)
+
+[Télécharger](https://github.com/HE-Arc/drawbot/releases) le code arduino et le programme de dessin.
 
 Dans /src :
 
