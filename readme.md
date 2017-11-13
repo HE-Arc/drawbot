@@ -16,16 +16,16 @@ L'atelier se déroule en 3 phases :
 
 ## Code 
 
-Il faut commencer par installer [l'éditeur (IDE) arduino](https://www.arduino.cc/en/Main/Software)
+1. Il faut commencer par installer [l'éditeur (IDE) arduino](https://www.arduino.cc/en/Main/Software)
 
-S'il s'agit d'un arduino nano provenant de Chine, il faut également installer son [driver](https://github.com/HE-Arc/drawbot/blob/master/driver_arduino_china.zip)
+2. S'il s'agit d'un arduino nano provenant de Chine, il faut également installer son [driver](https://github.com/HE-Arc/drawbot/blob/master/driver_arduino_china.zip)
 
-Dans l'IDE arduino, il faut configurer le type d'arduino. Dans le Menu Outils, choisir :
+3. Dans l'IDE arduino, il faut configurer le type d'arduino. Dans le Menu Outils, choisir :
 * Type de Carte : Arduino Nano
 * Processeur : ATmega 328
 * Port : Choisir la valeur la plus grande parmi les ports COM (il faut que l'arduino soit branché par cable USB)
 
-[Télécharger](https://github.com/HE-Arc/drawbot/releases) le code arduino et le programme de dessin.
+4. [Télécharger](https://github.com/HE-Arc/drawbot/releases) le code arduino et le programme de dessin.
 
 Dans /src :
 
@@ -34,11 +34,11 @@ Dans /src :
 * *generateur* : projet Qt pour dessiner à la souris et écrire la liste de points qui consitue le dessin dans un fichier texte. Ce fichier texte pourra ensuite être repris dans programme, pour être dessiné par le robot
 * *simulateur* : projet Processing permettant d'afficher le dessin d'un programme sur l'écran avant de le dessiner avec le robot
 
-## Licence
+## Licence
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Cette œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.
 
-## Crédits
+## Crédits
 
 Ont participé au développement du projet : Gérald Huguenin, David Grunenwald, Alexandre Neukomm, Julien Marchand, François Tièche
 
